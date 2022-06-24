@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-ck-trtc" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>
+		TRTC
+	</name>
+	<js-module name="TRTC" src="www/TRTC.js">
+		<clobbers target="TRTC" />
+	</js-module>
+	<!--  -->
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="TRTC">
+				<param name="android-package" value="org.apache.cordova.trtc.TRTC" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+			<!-- 权限 -->
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.RECORD_AUDIO" />
+			<uses-permission android:name="android.permission.CAMERA" />
+			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+			<uses-permission android:name="android.permission.BLUETOOTH" />
+			<!-- 硬件 本项目中其它插件添加了，就不用添加-->
+		<!-- 	<uses-feature android:name="android.hardware.camera" /> -->
+			<uses-feature android:name="android.hardware.camera.autofocus" />
+		</config-file>
+		<!-- aar -->
+		<source-file src="src/android/libs/LiteAVSDK_TRTC_9.6.0.11312.aar" target-dir="src/main/libs" />
+		<!-- java -->
+		<framework src="src/android/TRTC.gradle" custom="true" type="gradleReference" />
+		<source-file src="src/android/TRTC.java" target-dir="src/org/apache/cordova/trtc" />
+		<!-- basic包 -->
+		<source-file src="src/android/basic/TRTCBaseActivity.java" target-dir="src/org/apache/cordova/trtc/basic" />
+		<!-- basic包res -->
+		<source-file src="src/android/basic/res/drawable/common_button_bg.xml" target-dir="res/drawable" />
+		<source-file src="src/android/basic/res/drawable/common_edit_bg.xml" target-dir="res/drawable" />
+		<source-file src="src/android/basic/res/drawable/common_seekbar_style.xml" target-dir="res/drawable" />
+		<source-file src="src/android/basic/res/drawable/common_seekbar_thumb.xml" target-dir="res/drawable" />
+		<source-file src="src/android/basic/res/drawable/common_selector_radio_bg.xml" target-dir="res/drawable" />
+		<source-file src="src/android/basic/res/mipmap-xxhdpi/common_ic_back.png" target-dir="res/mipmap-xxhdpi" />
+		<source-file src="src/android/basic/res/mipmap-xxhdpi/common_user_portrait.png" target-dir="res/mipmap-xxhdpi" />
+		<!-- debug包 -->
+		<source-file src="src/android/debug/Constant.java" target-dir="src/org/apache/cordova/trtc/debug" />
+		<!-- videocall包 -->
+		<source-file src="src/android/videocall/FloatingView.java" target-dir="src/org/apache/cordova/trtc/videocall" />
+		<source-file src="src/android/videocall/VideoCallingActivity.java" target-dir="src/org/apache/cordova/trtc/videocall" />
+		<!-- videocall包res -->
+		<source-file src="src/android/videocall/res/drawable/videocall_background.xml" target-dir="res/drawable" />
+		<source-file src="src/android/videocall/res/layout/videocall_activity_calling.xml" target-dir="res/layout" />
+		<source-file src="src/android/videocall/res/layout/videocall_popup_layout.xml" target-dir="res/layout" />
+		<source-file src="src/android/videocall/res/layout/videocall_view_floating_default.xml" target-dir="res/layout" />
+		<source-file src="src/android/videocall/res/mipmap-xxhdpi/videocall_float_logo.png" target-dir="res/mipmap-xxhdpi" />
+		<source-file src="src/android/videocall/res/mipmap-xxhdpi/videocall_home.png" target-dir="res/mipmap-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/ic_meeting_camera_switch.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/ic_meeting_headset.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/ic_meeting_speaker.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/trtcmeeting_ic_meeting_camera_off.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/trtcmeeting_ic_meeting_camera_on.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/trtcmeeting_ic_meeting_mic_off.png" target-dir="res/drawable-xxhdpi" />
+		<source-file src="src/android/videocall/res/drawable-xxhdpi/trtcmeeting_ic_meeting_mic_on.png" target-dir="res/drawable-xxhdpi" />
+		<!-- color.xml和string.xml -->
+		<source-file src="src/android/videocall/res/values/colors.xml" target-dir="res/values" />
+		<source-file src="src/android/videocall/res/values/trtc_strings.xml" target-dir="res/values" />
+	</platform>
+</plugin>
